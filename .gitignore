@@ -1,0 +1,15 @@
+/**/__pycache__/
+/.coverage
+/.idea/
+/.venv/
+/bin/phing
+/bin/yaml-lint
+/composer.lock
+/demo.scad
+/dist/
+/poetry.lock
+/run_super_scad.py
+/test/**/*.actual.scad
+/test/coverage.xml
+/test/html/
+/vendor/
