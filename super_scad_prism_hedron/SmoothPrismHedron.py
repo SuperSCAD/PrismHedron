@@ -31,7 +31,9 @@ class SmoothPrismHedron(SmoothPolygonMixin, Polygon):
                  extend_by_eps_top: bool = False,
                  extend_by_eps_sides: bool | List[bool] | Set[int] | None = None,
                  extend_by_eps_bottom: bool = False,
-                 convexity: int | None = None):
+                 convexity: int | None = None,
+                 validate: bool = False,
+                 highlight_issues: bool = False):
         Polygon.__init__(self,
                          points=points,
                          extend_by_eps_sides=extend_by_eps_sides,
@@ -52,7 +54,10 @@ class SmoothPrismHedron(SmoothPolygonMixin, Polygon):
         :param extend_by_eps_bottom: Whether the bottom of the prism must be extended by eps for a clear overlap.
         :param convexity: Number of "inward" curves, i.e., expected number of path crossings of an arbitrary line
                           through the prism.
+        :param validate: Whether to validate the generated polyhedron.
+        :param highlight_issues: Whether to highlight all issues found by the validation in the generated polyhedron. 
         """
+
         self._height: float = height
         """
         The total height of the linear extruded smooth polygon.
@@ -81,6 +86,16 @@ class SmoothPrismHedron(SmoothPolygonMixin, Polygon):
         self._extend_by_eps_bottom: bool = extend_by_eps_bottom
         """
         Whether the bottom of the prism must be extended by eps for a clear overlap.
+        """
+
+        self._validate: bool = validate
+        """
+        Whether to validate the generated polyhedron.
+        """
+
+        self._highlight_issues: bool = highlight_issues
+        """
+        Whether to highlight all issues found by the validation in the generated polyhedron. 
         """
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -120,6 +135,22 @@ class SmoothPrismHedron(SmoothPolygonMixin, Polygon):
             self._profile_bottom = Rough()
 
         return self._profile_bottom
+
+    # ------------------------------------------------------------------------------------------------------------------
+    @property
+    def validate(self) -> bool:
+        """
+        Returns whether to validate the generated polyhedron.
+        """
+        return self._validate
+
+    # ------------------------------------------------------------------------------------------------------------------
+    @property
+    def highlight_issues(self) -> bool:
+        """
+        Returns whether to highlight all issues found by the validation in the generated polyhedron.
+        """
+        return self._highlight_issues
 
     # ------------------------------------------------------------------------------------------------------------------
     def build(self, context: Context) -> ScadWidget:
@@ -174,7 +205,10 @@ class SmoothPrismHedron(SmoothPolygonMixin, Polygon):
         faces.append([point for node_layers in reversed(layers_bottom) for point in reversed(node_layers[0])])
         faces.append([point for node_layers in layers_top for point in node_layers[-1]])
 
-        return Polyhedron(faces=faces, convexity=self.convexity)
+        return Polyhedron(faces=faces,
+                          convexity=self.convexity,
+                          validate=self.validate,
+                          highlight_issues=self.highlight_issues)
 
     # ------------------------------------------------------------------------------------------------------------------
     def _create_layers_top(self,

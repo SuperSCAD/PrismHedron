@@ -27,8 +27,7 @@ class SmoothPrismHedronTest(ScadTestCase):
                  Vector2(0.0, 60.0),
                  Vector2(60.0, 0.0)]
 
-        prism = SmoothPrismHedron(height=50.0,
-                                  points=nodes)
+        prism = SmoothPrismHedron(height=50.0, points=nodes, validate=True)
 
         self.assertFalse(prism.center)
         self.assertAlmostEqual(prism.height, 50.0)
@@ -53,9 +52,7 @@ class SmoothPrismHedronTest(ScadTestCase):
                  Vector2(0.0, 60.0),
                  Vector2(60.0, 0.0)]
 
-        prism = SmoothPrismHedron(height=50.0,
-                                  points=nodes,
-                                  center=True)
+        prism = SmoothPrismHedron(height=50.0, points=nodes, center=True, validate=True)
 
         self.assertTrue(prism.center)
         self.assertAlmostEqual(prism.height, 50.0)
@@ -84,7 +81,8 @@ class SmoothPrismHedronTest(ScadTestCase):
                                   points=nodes,
                                   profile_top=Fillet(radius=5.0),
                                   profile_verticals=Fillet(radius=5.0),
-                                  profile_bottom=Chamfer(skew_length=5.0))
+                                  profile_bottom=Chamfer(skew_length=5.0),
+                                  validate=True)
 
         self.assertFalse(prism.center)
         self.assertAlmostEqual(prism.height, 50.0)
@@ -116,7 +114,8 @@ class SmoothPrismHedronTest(ScadTestCase):
                                   profile_bottom=Chamfer(skew_length=5.0),
                                   extend_by_eps_top=True,
                                   extend_by_eps_sides=[False, True],
-                                  extend_by_eps_bottom=True)
+                                  extend_by_eps_bottom=True,
+                                  validate=True)
 
         self.assertFalse(prism.center)
         self.assertAlmostEqual(prism.height, 50.0)
@@ -151,7 +150,8 @@ class SmoothPrismHedronTest(ScadTestCase):
                                   profile_bottom=Chamfer(skew_length=10.0, side=2),
                                   extend_by_eps_top=True,
                                   extend_by_eps_bottom=True,
-                                  extend_by_eps_sides=[True])
+                                  extend_by_eps_sides=[True],
+                                  validate=True)
 
         self.assertFalse(prism.center)
         self.assertAlmostEqual(prism.height, 100.0)
@@ -186,7 +186,8 @@ class SmoothPrismHedronTest(ScadTestCase):
                                   profile_bottom=Chamfer(skew_length=10.0),
                                   extend_by_eps_top=True,
                                   extend_by_eps_bottom=True,
-                                  extend_by_eps_sides=[True])
+                                  extend_by_eps_sides=[True],
+                                  validate=True)
 
         self.assertFalse(prism.center)
         self.assertAlmostEqual(prism.height, 100.0)
@@ -221,7 +222,8 @@ class SmoothPrismHedronTest(ScadTestCase):
                                   profile_bottom=Chamfer(skew_length=10.0, side=1),
                                   extend_by_eps_top=True,
                                   extend_by_eps_bottom=True,
-                                  extend_by_eps_sides=[True])
+                                  extend_by_eps_sides=[True],
+                                  validate=True)
 
         self.assertFalse(prism.center)
         self.assertAlmostEqual(prism.height, 100.0)
