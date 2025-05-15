@@ -28,19 +28,19 @@ class TopInnerExternalSide2NodeSmoother(NodeSmoother):
         :param points_horizontal: The points of the two horizontal profiles at the node.
         """
         p1a = points_vertical[0]
-        p1b = points_vertical[0] + Vector2.from_polar_coordinates(1.0, normal_angle + (90 - 0.5 * inner_angle))
+        p1b = points_vertical[0] + Vector2.from_polar(1.0, normal_angle + (90 - 0.5 * inner_angle))
         p2a = points_vertical[-1]
-        p2b = points_vertical[-1] + Vector2.from_polar_coordinates(1.0, normal_angle - (90 - 0.5 * inner_angle))
+        p2b = points_vertical[-1] + Vector2.from_polar(1.0, normal_angle - (90 - 0.5 * inner_angle))
         intersection = LineIntersection2D.intersection(p1a, p1b, p2a, p2b)
 
         layers = []
-        for index_h in range(len(points_horizontal) - 1, -1, -1):
+        for index_h in range(len(points_horizontal)):
             layer = []
             z = height + points_horizontal[index_h].y
             for index_v in range(len(points_vertical)):
-                length = (points_horizontal[index_h].x - points_horizontal[-1].x)
+                length = (points_horizontal[index_h].x - points_horizontal[0].x)
                 angle = (intersection - points_vertical[index_v]).angle + 180.0
-                point = points_vertical[index_v] + Vector2.from_polar_coordinates(length, angle)
+                point = points_vertical[index_v] + Vector2.from_polar(length, angle)
                 layer.append(Vector3(point.x, point.y, z))
             layers.append(layer)
 

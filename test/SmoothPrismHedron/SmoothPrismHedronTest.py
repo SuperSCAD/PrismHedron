@@ -1,3 +1,5 @@
+import unittest
+
 from super_scad.scad.Context import Context
 from super_scad.scad.Scad import Scad
 from super_scad.type import Vector2
@@ -249,4 +251,7 @@ class SmoothPrismHedronTest(ScadTestCase):
 
         self.assertRaises(ValueError, lambda: scad.run_super_scad(prism, 'demo.scad'))
 
+
 # ----------------------------------------------------------------------------------------------------------------------
+if __name__ == "__main__":
+    unittest.main()

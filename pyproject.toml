@@ -14,21 +14,20 @@ classifiers = [
     "Intended Audience :: Manufacturing",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Multimedia :: Graphics :: 3D Modeling",
     "Topic :: Software Development :: Code Generators",
 ]
 
 [tool.poetry.dependencies]
-python = "^3.10.0"
-super-scad = "^0.10.3"
-super-scad-smooth-profile = "^0.6.2"
-super-scad-polygon = "^0.9.6"
+python = "^3.13.0"
+super-scad = "^0.11.0"
+super-scad-smooth-profile = "^0.6.3"
+super-scad-polygon = "^0.9.9"
 
 [tool.poetry.group.dev.dependencies]
-coverage = "^7.6.8"
-super-scad-smooth-profiles = "^0.6.1"
+coverage = "^7.8.0"
+super-scad-smooth-profiles = "^0.6.3"
 
 [build-system]
 requires = ["poetry-core"]

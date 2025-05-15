@@ -239,7 +239,7 @@ class SmoothPrismHedron(SmoothPolygonMixin, Polygon):
             nodes = self.nodes
             for index_node in self.extend_by_eps_sides:
                 phi = (nodes[(index_node + 1) % n] - nodes[index_node]).angle + 90.0
-                eps = Vector3.from_polar_coordinates(context.eps, azimuth=phi, inclination=90.0)
+                eps = Vector3.from_polar(context.eps, azimuth=phi, inclination=90.0)
                 layers[index_node][0].append(layers[index_node][0][-1] + eps)
                 layers[index_node][1].append(layers[index_node][1][-1] + eps)
                 layers[(index_node + 1) % n][0].insert(0, layers[(index_node + 1) % n][0][0] + eps)
