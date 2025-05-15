@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "Super-SCAD-Prism-Hedron"
-version = "0.9.1"
+version = "0.9.2"
 description = "SuperSCAD widgets for smooth prisms."
 authors = ["P.R. Water <p.r.water@setbased.nl>"]
 license = "MIT"
