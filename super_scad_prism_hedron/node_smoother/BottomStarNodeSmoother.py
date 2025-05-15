@@ -33,7 +33,7 @@ class BottomStarNodeSmoother(NodeSmoother):
             z = height + points_horizontal[index_h].y
             alpha = math.radians(0.5 * inner_angle)
             for index_v in range(len(points_vertical)):
-                length = (points_horizontal[index_h].x - points_horizontal[-1].x) / math.sin(alpha)
+                length = points_horizontal[index_h].x / math.sin(alpha)
                 point = points_vertical[index_v] + Vector2.from_polar(length, normal_angle)
                 layer.append(Vector3(point.x, point.y, z))
             layers.append(layer)

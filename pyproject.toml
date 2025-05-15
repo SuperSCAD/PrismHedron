@@ -27,7 +27,7 @@ super-scad-polygon = "^0.9.9"
 
 [tool.poetry.group.dev.dependencies]
 coverage = "^7.8.0"
-super-scad-smooth-profiles = "^0.6.3"
+super-scad-smooth-profiles = "^0.6.4"
 
 [build-system]
 requires = ["poetry-core"]

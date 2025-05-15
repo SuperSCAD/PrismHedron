@@ -34,11 +34,11 @@ class BottomInnerExternalSide1NodeSmoother(NodeSmoother):
         intersection = LineIntersection2D.intersection(p1a, p1b, p2a, p2b)
 
         layers = []
-        for index_h in range(len(points_horizontal) - 1, -1, -1):
+        for index_h in range(len(points_horizontal)):
             layer = []
             z = height + points_horizontal[index_h].y
             for index_v in range(len(points_vertical)):
-                length = (points_horizontal[index_h].x - points_horizontal[0].x)
+                length = points_horizontal[index_h].x
                 angle = (intersection - points_vertical[index_v]).angle + 180.0
                 point = points_vertical[index_v] + Vector2.from_polar(length, angle)
                 layer.append(Vector3(point.x, point.y, z))

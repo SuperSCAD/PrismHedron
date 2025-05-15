@@ -201,7 +201,7 @@ class SmoothPrismHedronTest(ScadTestCase):
         self.assertEqual(expected, actual)
 
     # ------------------------------------------------------------------------------------------------------------------
-    def test_smooth_prism_external_profile_other_sides(self):
+    def test_smooth_prism_external_profile_top_and_bottom(self):
         """
         Test a prism with an external profiles at the top and bottom.
         """
